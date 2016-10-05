@@ -46,27 +46,21 @@
 		<!-- /.container-fluid -->
 	</nav>
 	<div class="container">
-		<h1>회원 가입</h1>
-		<form method="post" action="/create">
-			<div class="form-group">
-				<label for="userId">사용자 아이디</label> <input type="userId"
-					class="form-control" name="userId" placeholder="user ID">
-			</div>
-			<div class="form-group">
-				<label for="password">Password</label> <input type="password"
-					class="form-control" name="password"
-					placeholder="Password">
-			</div>
-			<div class="form-group">
-				<label for="name">이름</label> <input type="text" class="form-control"
-					name="name" placeholder="이름">
-			</div>
-			<div class="form-group">
-				<label for="email-address">이메일 주소</label> <input type="email"
-					class="form-control" name="email" placeholder="email">
-			</div>
-			<button type="submit" class="btn btn-default">Submit</button>
-		</form>
+		<h1>사용자 목록</h1>
+		<table class="table table-striped">
+			<tr>
+				<td>사용자 아이디</td>
+				<td>이메일</td>
+				<td>이름</td>
+			</tr>
+			{{#users}}
+			<tr>
+				<td>{{userId}}</td>
+				<td>{{email}}</td>
+				<td>{{name}}</td>
+			</tr>
+			{{/users}}
+		</table>
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="webjars/jquery/3.1.1/jquery.min.js"></script>
