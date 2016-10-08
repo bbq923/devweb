@@ -1,4 +1,4 @@
-package org.nhnnext;
+package org.nhnnext.web;
 
 public class User {
 	private String userId;
@@ -27,5 +27,4 @@ public class User {
 		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + "]";
 	}
 
-	
 }

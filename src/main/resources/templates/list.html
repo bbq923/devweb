@@ -46,20 +46,24 @@
 		<!-- /.container-fluid -->
 	</nav>
 	<div class="container">
-		<h1>사용자 목록</h1>
-		<table class="table table-striped">
-			<tr>
-				<td>사용자 아이디</td>
-				<td>이메일</td>
-				<td>이름</td>
-			</tr>
-			{{#users}}
-			<tr>
-				<td>{{userId}}</td>
-				<td>{{email}}</td>
-				<td>{{name}}</td>
-			</tr>
-			{{/users}}
+		<table class="table table-condensed">
+			<caption>사용자 목록</caption>
+			<thead>
+				<tr>
+					<th>사용자 아이디</th>
+					<th>이름</th>
+					<th>이메일</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#users}}
+				<tr>
+					<th scope="row">{{userId}}</th>
+					<td>{{name}}</td>
+					<td>{{email}}</td>
+				</tr>
+				{{/users}}
+			</tbody>
 		</table>
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
