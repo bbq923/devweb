@@ -1,1 +1,2 @@
 INSERT INTO USER (user_Id, password, name, email) VALUES ('javajigi', 'pass', 'jaesung', 'javajigi@gmail.com');
+INSERT INTO USER (user_Id, password, name, email) VALUES ('sanjigi', 'test', 'jaesung2', 'javajigi2@gmail.com');
