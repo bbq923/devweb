@@ -14,7 +14,7 @@ public class User {
 	@Column(unique=true, nullable=false, length=15)
 	private String userId;
 	
-	@Column(nullable=false, length=20)
+	@Column(nullable=false, length=20, unique=true)
 	private String password;
 	private String name;
 	private String email;
@@ -52,6 +52,10 @@ public class User {
 
 	public String getPassword() {
 		return password;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	
