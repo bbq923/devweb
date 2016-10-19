@@ -22,7 +22,7 @@ public class UserController {
 	public String create(User user) {
 		System.out.println("user :" + user);
 		userRepository.save(user);
-		return "redirect:/list";
+		return "redirect:/user/list";
 	}
 	
 	@GetMapping("/list")
