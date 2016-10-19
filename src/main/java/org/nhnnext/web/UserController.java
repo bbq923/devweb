@@ -1,5 +1,7 @@
 package org.nhnnext.web;
 
+import javax.servlet.http.HttpSession;
+
 import org.nhnnext.domain.User;
 import org.nhnnext.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +33,28 @@ public class UserController {
 		return "user/list";
 	}
 	
-	@GetMapping("/login")
-	public String login() {
+	@GetMapping("/loginForm")
+	public String loginForm() {
 		return "login";
+	}
+	
+	@PostMapping("/login")
+	public String login(String userId, String password, HttpSession session) {
+		User user = userRepository.findByUserId(userId);
+		if (user==null) {
+			System.out.println("Login Failure!");
+			return "redirect:/user/loginForm";
+		}
+		
+		if (!password.equals(user.getPassword())) {
+			System.out.println("Login Failure!");
+			return "redirect:/user/loginForm";
+		}
+		
+		System.out.println("Login Success!");
+		session.setAttribute("user", user);
+		
+		return "redirect:/";
 	}
 	
 	@GetMapping("/form")

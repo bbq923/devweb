@@ -50,6 +50,10 @@ public class User {
 		this.email = user.email;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
 	
 
 }
