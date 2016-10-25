@@ -23,12 +23,25 @@ public class User {
 		this.id = id;
 	}
 	
+	public String getUserId() {
+		return this.userId;
+	}
+	
+	
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public boolean matchPassword(String newPassword) {
+		if (newPassword == null) {
+			return false;
+		}
+		
+		return newPassword.equals(password);
 	}
 
 	public void setName(String name) {
@@ -50,14 +63,14 @@ public class User {
 		this.email = user.email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
 
-	public Long getId() {
-		return id;
-	}
 
+	public boolean matchId(Long newId) {
+		if (newId == null) {
+			return false;
+		}
+		return newId.equals(id);
+	}
 	
 
 }
