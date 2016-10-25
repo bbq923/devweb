@@ -26,7 +26,7 @@ public class QuestionController {
 		return "/qna/form";
 	}
 
-	@PostMapping("/make")
+	@PostMapping("")
 	public String create(String title, String contents, HttpSession session) {
 		if (!HttpSessionUtils.isLoginUser(session)) {
 			return "/user/loginForm";
@@ -37,5 +37,10 @@ public class QuestionController {
 		Question newQuestion = new Question(sessionUser.getUserId(), title, contents);
 		questionRepository.save(newQuestion);
 		return "redirect:/";
+	}
+	
+	@GetMapping("/show")
+	public String show() {
+		return "qna/show";
 	}
 }
