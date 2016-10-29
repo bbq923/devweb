@@ -65,12 +65,13 @@ public class User {
 
 
 
-	public boolean matchId(Long newId) {
-		if (newId == null) {
+	public boolean matchId(User user) {
+		if (user.id == null) {
 			return false;
 		}
-		return newId.equals(id);
+		
+		return user.id.equals(this.id);
 	}
 	
-
+	
 }

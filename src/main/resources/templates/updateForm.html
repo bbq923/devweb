@@ -11,7 +11,6 @@
       <div class="panel panel-default content-main">
       	{{#user}}
           <form name="question" method="post" action="/user/{{id}}/update">
-          		<input type="hidden" name="id" value="{{id}}" />
               <div class="form-group">
                   <label for="userId">사용자 아이디</label>
                   <input class="form-control" id="userId" name="userId" value="{{userId}}" placeholder="userId" readonly>
