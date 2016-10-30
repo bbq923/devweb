@@ -5,24 +5,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
-public class User {
-	@Id
-	@GeneratedValue
-	private Long id;
+public class User extends AbstractEntity {
 	
-	@Column(unique=true, nullable=false, length=15)
-	private String userId;
+	//@Column(unique=true, nullable=false, length=15)
 	
 	@Column(nullable=false, length=20, unique=true)
+	@JsonProperty
+	private String userId;
+	
+	@JsonIgnore // 명시적으로 JSON으로 처리하지 않겠다고 표시
 	private String password;
+
+	@JsonProperty
 	private String name;
+	
+	@JsonProperty
 	private String email;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
 	public String getUserId() {
 		return this.userId;
 	}
@@ -54,7 +57,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userId=" + userId + ", password=" + password + ", name=" + name + ", email="
+		return "User [" + super.toString() + ", userId=" + userId + ", password=" + password + ", name=" + name + ", email="
 				+ email + "]";
 	}
 
@@ -62,42 +65,13 @@ public class User {
 		this.name = user.name;
 		this.email = user.email;
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-
-
-
-	public boolean matchId(User user) {
-		if (user.id == null) {
+	
+	public boolean matchId(Long newId) {
+		if (newId == null) {
 			return false;
 		}
 		
-		return user.id.equals(this.id);
+		return newId.equals(getId());
 	}
-	
-	
 	
 }

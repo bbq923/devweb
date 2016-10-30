@@ -82,7 +82,7 @@ public class UserController {
 		User user = userRepository.findOne(id);
 		
 		User sessionedUser = HttpSessionUtils.getUserFromSession(session);
-		if (!sessionedUser.matchId(user)) {
+		if (!sessionedUser.matchId(id)) {
 			throw new IllegalStateException("You can't change other user's information.");
 		}
 		
@@ -100,7 +100,7 @@ public class UserController {
 		
 		
 		User sessionedUser = HttpSessionUtils.getUserFromSession(session);
-		if (!sessionedUser.matchId(dbUser)) {
+		if (!sessionedUser.matchId(id)) {
 			throw new IllegalStateException("You can't change other user's information.");
 		}
 		
